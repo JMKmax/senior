@@ -10,9 +10,15 @@
 <script>
 	function * gen(){
 		console.log('hello')
-		yield 'get data'
+		yield 'get data';
+		console.log('hello second');
+		yield 'get data2';
+		return 'get data3'
 	}
 	let p1 = gen();
-	p1.next()
+	// p1.next()
+	console.log(p1.next());
+	console.log(p1.next());
+	console.log(p1.next());
 </script>
 </html>
