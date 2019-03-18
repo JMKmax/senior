@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tet.5.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div class="box"></div>
+</body>
+<script src= 'js/jquery-1.12.4.js'></script>
+<script>
+$(function(){
+	var fade = {
+		show:function($elem){
+			$elem.trigger('shown');
+			$elem.show();
+			$elem.trigger('show');
+		},
+		hide:function($elem){
+			$elem.trigger('hidden');
+			$elem.hide();
+			$elem.trigger('hide');
+		}
+	};
+	var $box = $('.box')
+	$box.on('shown show hidden hide',function(ev){
+		if(ev.type == 'shown'){
+			console.log('shown...')
+		}else if(ev.type == 'show'){
+			console.log('show')
+		}else if(ev.type == 'hidden'){
+			console.log('hidden ...')
+		}else if(ev.type == 'hide'){
+			console.log('hide ...')
+		}
+	});
+	$('button').eq(0).on('click',function(){
+		fade.show($box)
+	})
+	$('button').eq(1).on('click',function(){
+		fade.hide($box)
+	})
+})
+</script>
+</html>

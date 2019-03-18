@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-promise的静态方法-promise.resolve.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let p1 = Promise.resolve()
+	console.log(p1)
+	let p2 = Promise.resolve(p1);
+	console.log(p2)
+	console.log(p1 === p2)
+	let p3 ={
+		then:function(){
+			console.log('hello')
+		}
+	}
+	console.log(Promise.resolve(p3))
+	
+	let p4 ={
+		nothen:function(){
+			console.log('hi')
+		}
+	}
+	console.log(Promise.resolve(p4))
+</script>
+</html>

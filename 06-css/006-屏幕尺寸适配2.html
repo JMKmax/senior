@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>05-屏幕尺寸适配.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		img{
+			/*width:500px;*/
+			/*width:40%;*/
+			width: 5rem;
+			float: left;
+		}
+		h2{
+			/*font-size: 24px;*/
+			/*font-size: 50%;百分比的情况下，文字不容易适配*/
+			font-size: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<img src="../js/images/bird.jpg" alt="">
+	<h2>我是标题</h2>
+</body>
+<script>
+	(function(win,doc){
+		var oH = document.getElementsByTagName('html')[0];
+		function refeshWidth(){
+			var iWidth = doc.body.clientWidth || doc.document.clientWidth;
+			var aWidth = iWidth/100;
+			oH.style.fontSize = aWidth + 'px';
+		}
+		
+		win.addEventListener('resize',refeshWidth)
+	})(window,document);
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content="width=device-width">
+	<title>003视口.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		h2{
+			font-size: 24px;
+		}
+		p{
+			font-size: 18px
+		}
+	</style>
+</head>
+<body>
+	<h2>我是标题</h2>
+	<p>我是内容</p>
+</body>
+<script>
+	function add(){
+		var x = 15;
+		while(x <20){
+			x++;
+			if(x/3 != 0){
+				x++;
+				break
+			}
+		}
+		console.log(x)
+	}
+	add();
+	function foo(){
+		var a = 0;
+		var b = 0;
+		for(i=0;i<=10;i+=2){
+			a+=i;
+			b+=i+1;
+			// i=i+1;;
+			// b+=i;
+		}
+		console.log(a);
+		console.log(b);
+	}
+	foo()
+</script>
+</html>

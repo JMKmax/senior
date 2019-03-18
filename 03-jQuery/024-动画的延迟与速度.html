@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-动画的延迟与速度.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+</body>
+<script src= 'js/jquery-1.12.4.js'></script>
+<script>
+$(function(){
+	$('div').eq(0).animate({width:300},1000,'linear');//动画的速度
+	$('div').eq(0).delay(1000).animate({height:300},1000);//动画延迟
+	$('div').eq(0).animate({opacity:0.5},1000);
+	$('div').eq(1).animate({width:300},1000);
+	$('div').eq(1).animate({height:300},1000);
+	$('div').eq(1).animate({opacity:0.5},1000);
+})
+</script>
+</html>

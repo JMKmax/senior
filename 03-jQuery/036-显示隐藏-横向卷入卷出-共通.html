@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-显示隐藏-横向卷入卷出-共通.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			padding:10px;
+			border:10px solid #ccc;
+			background-color: skyblue;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div id="box"></div>
+</body>
+<script src= 'js/jquery-1.12.4.js'></script>
+<script>
+	function init($ettr,hiddenCb){
+		if($ettr.is(':hidden')){
+			$ettr.data('status','hidden');
+			typeof hiddenCb == 'function' && hiddenCb();
+		}else{
+			$ettr.data('status','shown')
+		}
+	}
+	function show($ettr,cd){
+		if($ettr.data('status') == 'shown') return;
+		if($ettr.data('status') == 'show') return;
+		$ettr.data('status','show').trigger('show');
+		cd();
+	}
+	function hide($ettr,cd){
+		if($ettr.data('status') == 'hidden') return;
+		if($ettr.data('status') == 'hide') return;
+		$ettr.data('status','hide').trigger('hidden');
+		cd();
+	}
+	var $a = {
+		init:init,
+		show:function($ettr){
+			show($ettr,function(){
+				$ettr.show(2000,function(){
+					$ettr.trigger('shown').data('status','shown');
+				});
+			})
+		},
+		hide:function($ettr){
+			hide($ettr,function(){
+				$ettr.hide();
+				$ettr.trigger('hide').data('status','hidden');
+			})
+		}
+	}
+	var js = {
+		fade:{
+			init:function($ettr){
+				js_init($ettr);
+			},
+			show:function($ettr){
+			  	js_show($ettr,'fadeIn');
+			},
+			hide:function($ettr){
+				js_hide($ettr,'fadeOut');
+			}
+		},
+		slide:{
+			init:function($ettr){
+				js_init($ettr);
+			},
+			show:function($ettr){
+			  	js_show($ettr,'slideDown');
+			},
+			hide:function($ettr){
+				js_hide($ettr,'slideUp');
+			}
+		},
+		slideLeft:{
+			init:function($ettr){
+				js_custoeInit($ettr,{
+						width:0,
+						paddingLeft:0,
+						paddingRight:0,
+						borderLeftWidth:0,
+						borderRightWidth:0
+					})
+			},
+			show:function($ettr){
+				js_customeShow($ettr)
+			},
+			hide:function($ettr){
+				js_customeHide($ettr,{
+						width:0,
+						paddingLeft:0,
+						paddingRight:0,
+						borderLeftWidth:0,
+						borderRightWidth:0
+					})
+			}
+		},
+		fadeSlideLeft:{
+			init:function($ettr){
+				js_custoeInit($ettr,{
+						width:0,
+						paddingLeft:0,
+						paddingRight:0,
+						borderLeftWidth:0,
+						borderRightWidth:0,
+						opacity:0
+					})
+			},
+			show:function($ettr){
+				js_customeShow($ettr)
+			},
+			hide:function($ettr){
+				js_customeHide($ettr,{
+						width:0,
+						paddingLeft:0,
+						paddingRight:0,
+						borderLeftWidth:0,
+						borderRightWidth:0,
+						opacity:0
+					})
+			}
+		},
+	};
+	function js_custoeInit($ettr,options){
+		$ettr.removeClass('transition');
+		var styles={};
+		for(var key in options){
+			styles[key] = $ettr.css(key)
+		}
+		$ettr.data('styles',styles);
+		init($ettr,function(){
+			$ettr.css(options)
+		})
+	};
+	function js_customeShow($ettr){
+		show($ettr,function(){
+			$ettr.show();//display = block;
+			$ettr.stop()
+			.animate($ettr.data('styles'),function(){
+				$ettr.trigger('shown').data('status','shown');
+			})
+		})
+	};
+	function js_customeHide($ettr,options){
+		hide($ettr,function(){
+			$ettr.stop()
+			.animate(options,function(){
+				$ettr.hide()//display = none;
+				$ettr.trigger('hide').data('status','hidden');
+			})
+		
+		})
+	}
+	function js_init($ettr){
+		$ettr.removeClass('transition');
+		init($ettr);
+	};
+	function js_show($ettr,mode){
+		show($ettr,function(){
+			$ettr.stop()
+			[mode]();
+			$ettr.trigger('shown').data('status','shown');
+		})
+	};
+	function js_hide($ettr,mode){
+		hide($ettr,function(){
+			$ettr.stop()
+			[mode]();
+			$ettr.trigger('hide').data('status','hidden');
+		})
+	}
+	var $di = $('#box');
+	$di.on('show shown hide hidden',function(ev){
+		if(ev.type == 'show'){
+			console.log('show...');
+		}else if(ev.type == 'shown'){
+			console.log('shown...');
+		}else if(ev.type == 'hidden'){
+			console.log('hidden...');
+		}else if(ev.type == 'hide'){
+			console.log('hide...')
+		}
+		
+	});
+	/*
+	$a.init($di);
+	$('button').eq(0).on('click',function(){
+		$a.show($di)
+	})
+	$('button').eq(1).on('click',function(){
+		$a.hide($di)
+	})
+	*/
+	/*
+	js.fade.init($di);
+	$('button').eq(0).on('click',function(){
+		js.fade.show($di)
+	})
+	$('button').eq(1).on('click',function(){
+		js.fade.hide($di)
+	})
+	*/
+	/*
+	js.slide.init($di);
+	$('button').eq(0).on('click',function(){
+		js.slide.show($di)
+	})
+	$('button').eq(1).on('click',function(){
+		js.slide.hide($di)
+	})
+	*/
+	/*
+	js.slideLeft.init($di);
+	$('button').eq(0).on('click',function(){
+		js.slideLeft.show($di)
+	})
+	$('button').eq(1).on('click',function(){
+		js.slideLeft.hide($di)
+	})
+	*/
+	js.fadeSlideLeft.init($di);
+	$('button').eq(0).on('click',function(){
+		js.fadeSlideLeft.show($di)
+	})
+	$('button').eq(1).on('click',function(){
+		js.fadeSlideLeft.hide($di)
+	})
+
+</script>
+</html>

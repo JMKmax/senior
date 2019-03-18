@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033-显示隐藏-自定义事件.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div id="box"></div>
+</body>
+<script src= 'js/jquery-1.12.4.js'></script>
+<script>
+	function init($ettr){
+		if($ettr.is(':hidden')){
+			$ettr.data('status','hidden');
+		}else{
+			$ettr.data('status','shown')
+		}
+	}
+	function show($ettr,cd){
+		if($ettr.data('status') == 'shown') return;
+		if($ettr.data('status') == 'show') return;
+		$ettr.data('status','show').trigger('show');
+		cd();
+	}
+	function hide($ettr,cd){
+		if($ettr.data('status') == 'hidden') return;
+		if($ettr.data('status') == 'hide') return;
+		$ettr.data('status','hide').trigger('hidden');
+		cd();
+	}
+	var $a = {
+		init:init,
+		show:function($ettr){
+			/*
+			if($ettr.data('status') == 'shown') return;
+			if($ettr.data('status') == 'show') return;
+			$ettr.data('status','show').trigger('show');
+			
+			$ettr.show(2000,function(){
+				$ettr.trigger('shown').data('status','shown');
+			});
+		},
+			*/
+			show($ettr,function(){
+				$ettr.show(2000,function(){
+					$ettr.trigger('shown').data('status','shown');
+				});
+			})
+		},
+		hide:function($ettr){
+			/*
+			if($ettr.data('status') == 'hidden') return;
+			if($ettr.data('status') == 'hide') return;
+			$ettr.data('status','hide').trigger('hidden');
+			$ettr.hide();
+			$ettr.trigger('hide').data('status','hidden');
+		}
+		*/
+			hide($ettr,function(){
+				$ettr.hide();
+				$ettr.trigger('hide').data('status','hidden');
+			})
+		}
+	}
+	var js = {
+		fade:{
+			init:function($ettr){
+				// $ettr.removeClass('transition');
+				init($ettr);
+			},
+			show:function($ettr){
+				/*
+				if($ettr.data('status') == 'shown') return;
+				if($ettr.data('status') == 'show') return;
+				$ettr.data('status','show').trigger('show');
+				*/
+				/*
+				$ettr.show(2000,function(){
+					$ettr.trigger('shown').data('status','shown');
+				});
+				
+				$ettr.stop()
+				.fadeIn();
+				$ettr.trigger('shown').data('status','shown');
+				*/
+				show($ettr,function(){
+					$ettr.stop()
+					.fadeIn();
+					$ettr.trigger('shown').data('status','shown');
+				})
+			
+		},
+		hide:function($ettr){
+			/*
+			if($ettr.data('status') == 'hidden') return;
+			if($ettr.data('status') == 'hide') return;
+			$ettr.data('status','hide').trigger('hidden');
+			*/
+			/*
+			$ettr.hide();
+			$ettr.trigger('hide').data('status','hidden');
+			*/
+			/*
+			$ettr.stop()
+			.fadeOut();
+			$ettr.trigger('hide').data('status','hidden');
+			*/
+			hide($ettr,function(){
+				$ettr.stop()
+				.fadeOut();
+				$ettr.trigger('hide').data('status','hidden');
+			})
+		}
+		}
+	}
+	var $di = $('#box');
+	$di.on('show shown hide hidden',function(ev){
+		if(ev.type == 'show'){
+			console.log('show...');
+		}else if(ev.type == 'shown'){
+			console.log('shown...');
+		}else if(ev.type == 'hidden'){
+			console.log('hidden...');
+		}else if(ev.type == 'hide'){
+			console.log('hide...')
+		}
+		
+	});
+	/*
+	$a.init($di);
+	$('button').eq(0).on('click',function(){
+		$a.show($di)
+	})
+	$('button').eq(1).on('click',function(){
+		$a.hide($di)
+	})
+	*/
+	js.fade.init($di);
+	$('button').eq(0).on('click',function(){
+		js.fade.show($di)
+	})
+	$('button').eq(1).on('click',function(){
+		js.fade.hide($di)
+	})
+	
+</script>
+</html>

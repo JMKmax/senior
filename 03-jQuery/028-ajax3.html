@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-ajax3.html</title>
+</head>
+<body>
+	<button>获取</button>
+</body>
+<script src= 'js/jquery-1.12.4.js'></script>
+<script>
+$(function(){
+	$('button').on('click',function(){
+		var jqXHR = $.ajax({
+						url:'js/data.json',
+						type:'GET',
+						// data:{name:'Amy',age:18},
+						dataType:'json',
+						// success:function(data,stateMsg,jqXHR){
+						// 	console.log(data.name);
+						// 	console.log(data);
+						// 	console.log(stateMsg);
+						// 	console.log(jqXHR)
+						// 	},
+						// error:function(jqXHR,stateMsg){
+						// 	console.log(jqXHR);
+						// 	console.log(stateMsg);
+						// },
+						// complete:function(jqXHR,stateMsg){
+						// 	console.log(jqXHR);
+						// 	console.log(stateMsg);
+						// },
+						// timeout:1000,
+						// statusCode:{404:function(){
+						// 	console.log('出现错误')
+						// }},
+						// headers:{test:'test'}
+						});
+		jqXHR.abort();
+		jqXHR.done(function(data,stateMsg,jqXHR){
+			console.log(data.name);
+			console.log(data);
+			console.log(stateMsg);
+			console.log(jqXHR)
+		});
+		jqXHR.fail(function(jqXHR,stateMsg){
+			console.log(jqXHR);
+			console.log(stateMsg);
+		});
+		jqXHR.always(function(jqXHR,stateMsg){
+			console.log(jqXHR);
+			console.log(stateMsg);
+		});
+			
+	})
+	
+})
+</script>	
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-替换节点.html</title>
+</head>
+<body>
+	<button>替换1</button>
+	<button>替换2</button>
+	<button>替换3</button>
+	<button>复制</button>
+	<div>div1</div>
+	<div>div2</div>
+	<div>div3</div>
+</body>
+<script src= 'js/jquery-1.12.4.js'></script>
+<script>
+$(function(){
+	$('button').eq(0).on('click',function(){
+		var $H2 = $('<h2>我是标题</h2>')
+		$('div').replaceWith($H2);
+	});
+	$('button').eq(1).on('click',function(){
+		$('div').replaceWith('<h2>我是标题</h2>');
+	});
+	$('button').eq(2).on('click',function(){
+		var $H2 = $('<h2>我是标题</h2>')
+		$H2.replaceAll($('div'));
+	});
+	$('div').eq(2).on('click',function(){
+		alert('hello')
+	})
+	$('button').eq(3).on('click',function(){
+		var $F = $('div').eq(2).clone(true);
+		$('body').append($F)
+	});
+	
+})
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-显示隐藏-插件测试.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			padding:10px;
+			border:10px solid #ccc;
+			background-color: skyblue;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div id="box"></div>
+</body>
+<script src= 'js/jquery-1.12.4.js'></script>
+<script src="js/showhide-插件.js"></script>
+<script>
+	
+	var $di = $('#box');
+
+	$di.showHide({})
+	$di.on('show shown hide hidden',function(ev){
+		if(ev.type == 'show'){
+			console.log('show...');
+		}else if(ev.type == 'shown'){
+			console.log('shown...');
+		}else if(ev.type == 'hidden'){
+			console.log('hidden...');
+		}else if(ev.type == 'hide'){
+			console.log('hide...')
+		}
+		
+	});
+	$('button').eq(0).on('click',function(){
+		$di.showHide('show')
+	})
+	$('button').eq(1).on('click',function(){
+		$di.showHide('hide')
+	})
+</script>
+</html>

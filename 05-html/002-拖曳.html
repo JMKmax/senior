@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-拖曳.html</title>
+	<style>
+		#target{
+			height: 300px;
+			width: 300px;
+			background-color: skyblue;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -150px;
+			margin-left: -150px;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="target"></div>
+	<div id="box" draggable = true></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('#box').on('drag',function(){
+			console.log('drag')
+		});
+		$('#target')
+		.on('drop',function(){
+			$(this).append($('#box'))	
+		})
+		.on('dragover',function(ev){
+
+			ev.preventDefault()
+		})
+		.on('dragend',function(){
+			alert('已完成拖拽')
+		})
+	})
+</script>
+</html>

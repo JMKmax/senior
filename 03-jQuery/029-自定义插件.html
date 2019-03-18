@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-自定义插件.html</title>
+</head>
+<body>
+	<button>插件</button>
+	<div>我是div</div>
+	<div>我是div</div>
+</body>
+<script src= 'js/jquery-1.12.4.js'></script>
+<script>
+	;(function($){
+		$.prototype.setColor = function(options){
+			var DEFAULTS = {color:'red'};
+			options = $.extend({},DEFAULTS,options)
+			var res = this.each(function(index,attr){
+				this.style.color = options.color;
+			})
+			console.log(this);
+			return res;
+		}
+	})(jQuery);
+</script>
+<script>
+$(function(){
+	$('button').on('click',function(){
+		$('div').setColor({color:'blue'})
+	})
+})
+</script>
+</html>

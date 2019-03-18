@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-ajax2.html</title>
+</head>
+<body>
+	<button>获取</button>
+</body>
+<script src= 'js/jquery-1.12.4.js'></script>
+<script>
+$(function(){
+	$('button').on('click',function(){
+		$.ajax({
+		url:'http://127.0.0.1:3001',
+		dataType:'jsonp',
+		jsonp:'callback',
+		success:function(data,stateMsg,jqXHR){
+			console.log(data.name);
+			console.log(data);
+			console.log(stateMsg);
+			console.log(jqXHR)
+			},
+		})
+		
+	})
+	
+})
+</script>	
+</html>

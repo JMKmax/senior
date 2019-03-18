@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-箭头函数与普通函数的区别.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function Person(){
+
+	}
+	var p = new Person;
+	console.log(p)
+	*/
+/*  箭头函数没有原型对象,所以不能用箭头函数来定义构造函数
+	let Person = () =>{
+
+	}
+	var p = new Person;
+	console.log(p)
+	*/
+/*
+	function Person(){
+		console.log(arguments)
+	};
+	Person(11,22,33)
+	*/
+/* arguments is not defined  箭头函数中没有arguments
+	let Person = () =>{
+		console.log(arguments)
+	}
+	Person(11,22,33)
+	*/
+/*
+	show()
+	function show(){
+		console.log('hello')
+	}
+	*/
+/*  show is not defined   箭头函数不存在声明的提升
+	show()
+	let show = () =>{
+		console.log('helleo')
+	}
+	*/
+</script>
+</html>

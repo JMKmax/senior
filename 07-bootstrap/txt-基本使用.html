@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>txt-基本使用.html</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.contener{
+			width: 500px;
+			height: 500px;
+			margin:100px auto;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="contener">
+		<div class="dropdown">
+		  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Dropdown trigger
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dLabel">
+		    <li>
+		    	<p>啦啦啦啦啦</p>
+		    </li>
+		     <li>
+		    	<p>啦啦啦啦啦</p>
+		    </li>
+		  </ul>
+		</div>
+
+		<div class="btn-group" data-toggle="buttons">
+		  <label class="btn btn-primary active">
+		    <input type="checkbox" autocomplete="off" checked> Checkbox 1 (pre-checked)
+		  </label>
+		  <label class="btn btn-primary">
+		    <input type="checkbox" autocomplete="off"> Checkbox 2
+		  </label>
+		  <label class="btn btn-primary">
+		    <input type="checkbox" autocomplete="off"> Checkbox 3
+		  </label>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</html>
