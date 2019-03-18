@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033-class定义类.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	class Person{
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		sayName(){
+			console.log('I am '+this.name)
+		}
+		static sayHi(){
+			console.log('hi...')
+		}
+	}
+	let p = new Person('tom');
+	p.sayName()
+
+	class Student extends Person{
+		constructor(name,age,major){
+			super(name,age);
+			this.major = major
+		}
+		sayMajor(){
+			console.log('I am '+this.major)
+		}
+	}
+	let s = new Student('leo',88,'Computer')
+	console.log(s);
+	s.sayMajor()
+	Student.sayHi()
+</script>
+</html>

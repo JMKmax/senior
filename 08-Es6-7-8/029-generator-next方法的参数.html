@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-generator-next方法的参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen(x){
+		console.log(x);
+		let y = yield (x+5);
+		console.log(y);
+		let z = yield (y+10);
+		console.log(z);
+		return (x+y+z)
+	}
+	let g1 = gen(5);
+	/*
+	console.log(g1.next())
+	console.log(g1.next());
+	console.log(g1.next());
+	*/
+	console.log(g1.next())
+	console.log(g1.next(10));
+	console.log(g1.next(20));
+</script>
+</html>
