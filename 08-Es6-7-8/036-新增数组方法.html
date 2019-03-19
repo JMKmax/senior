@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-新增数组方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let likeArr = {
+		0:'aa',
+		1:'bb',
+		length:2
+	}
+	console.log(likeArr)
+	console.log(Array.from(likeArr));
+	let arr1 = [22,33,55,66,77];
+	console.log(arr1.find(n1=>n1>35))//55
+	console.log(arr1.findIndex(n=>n>35))//2;
+	console.log(arr1.includes(33))//true
+	console.log(arr1.includes(35))//false
+	console.log(arr1.includes('33'))//false
+
+
+
+	let res1 = 3 ** 2;
+	let res2 = 2 ** 3;
+	console.log(res1);
+	console.log(res2);
+
+
+	console.log('x'.padStart(5,'abc'))
+	console.log('x'.padEnd(5,'abc'));
+	console.log('666'.padStart(10,'0'))
+</script>
+</html>
