@@ -15,7 +15,7 @@
 	}
 	fn()
 	*/
-	let promise = new Promise((resolve,rejected)=>{
+	let promise = new Promise((resolve,reject)=>{
 		setTimeout(()=>{
 			resolve('data1')
 		},200)
@@ -27,10 +27,33 @@
 	}
 	fn()
 	*/
+/*
 	async function fn(){
-		await promise.rejected('出错了');
+		await Promise.reject('出错了');
+		//后面的程序不再执行
 		let g1 = await promise;
 		console.log(g1);
+	}
+	fn()
+	.catch(err=>{
+		console.log(err)
+	})
+*/
+	async function fn(){
+		try{
+			await Promise.reject('出错了');
+		}
+		catch(err){
+			console.log(err)
+		}
+
+		try{
+			let g1 = await promise;
+			console.log(g1);
+		}
+		catch(err){
+			console.log(err)
+		}
 	}
 	fn()
 </script>

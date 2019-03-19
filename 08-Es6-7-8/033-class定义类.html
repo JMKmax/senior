@@ -16,14 +16,14 @@
 		sayName(){
 			console.log('I am '+this.name)
 		}
-		static sayHi(){
+		static sayHi(){  //静态方法的定义
 			console.log('hi...')
 		}
 	}
 	let p = new Person('tom');
 	p.sayName()
 
-	class Student extends Person{
+	class Student extends Person{     //继承
 		constructor(name,age,major){
 			super(name,age);
 			this.major = major

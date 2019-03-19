@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-箭头函数中的this.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function show(id){
+		this.id = id;
+		setTimeout(function(){
+			console.log(this,this.id)
+		},200)
+	}
+	var id = 200;
+	new show(100)
+	*/
+/*
+	function show(id){
+		this.id = id;
+		setTimeout(() =>{
+			console.log(this,this.id)
+		},200)
+	}
+	var id = 200;
+	new show(100)
+	*/
+	function show(id){
+		this.id = id;
+		setTimeout(function(){
+			console.log(this,this.id)
+		}.bind(this),200)
+	}
+	var id = 200;
+	new show(100)
+</script>
+</html>

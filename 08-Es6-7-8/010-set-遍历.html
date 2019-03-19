@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-set-遍历.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let s = new Set([22,33,55,66,88]);
+	s.add(99)
+	console.log(s);
+	for(let key of s.keys()){
+		console.log('aaa',key)
+	}
+	for(let value of s.values()){
+		console.log('bbb',value)
+	};
+	for(let value of s){
+		console.log('ccc',value)
+	}
+	for(let entry of s.entries()){
+		console.log('ddd',entry)
+	}
+	s.forEach(function(value,index){
+		console.log(value,index)
+	})
+</script>
+</html>

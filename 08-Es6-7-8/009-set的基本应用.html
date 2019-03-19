@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-set的基本应用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let arr = [22,33,55,66,77,22];
+	let s1 = new Set();
+	s1.add(11);
+	s1.add(22);
+	s1.add(33);
+	s1.add(22);//set里面值唯一，重复的数值将添加不进去
+	console.log(s1.delete(11));
+	console.log(s1.has(22));
+	console.log(s1);
+	s1.clear();
+	console.log(s1);
+	let s2 = new Set(arr);
+	console.log(s2);
+	let arr1 = [...s2];
+	console.log(arr1)
+</script>
+</html>

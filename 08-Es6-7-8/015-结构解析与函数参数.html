@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-结构解析与函数参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function show(age,{username='Tom',hobby='basketball'}={}){
+		console.log(age,username,hobby)
+	}
+	show();
+	show(18,{username:'Leo'})
+</script>
+</html>

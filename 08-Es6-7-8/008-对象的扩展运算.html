@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-对象的扩展运算.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj1 = {username:'tom',friend:{username:'Leo'}};
+	let obj2 = {...obj1};
+	obj2.username = 'pank';
+	obj2.friend.username = 'Amy';// 复制的是引用
+	console.log(obj1,obj2)
+</script>
+</html>
