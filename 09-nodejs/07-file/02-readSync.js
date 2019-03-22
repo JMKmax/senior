@@ -8,5 +8,5 @@ fs.readSync(fd,buf,0,100,0)
 console.log(buf);
 fs.closeSync(fd)
 */
-fs.readFileSync('./01.txt',{flag:'r'})
+const data = fs.readFileSync('./01.txt',{flag:'r'})
 console.log(data)
